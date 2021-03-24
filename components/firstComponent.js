@@ -18,7 +18,7 @@ export default function FirstComponent() {
         <div>
             {users.map(i => [
                 <h1>{i.name}</h1>,
-                <TodoList todos = {todos.filter(j => j.userId === i.id)}  />
+                <TodoList todos = {todos.filter(j => j.userId === i.id)} allTodos = {todos} setAllTodos = {setTodos}/> 
             ])}
         </div>
     )

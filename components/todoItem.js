@@ -1,7 +1,7 @@
 import React from 'react';
 
-function buttonClick(){
-    console.log('cotiz')
+function buttonClick(props,todoId){
+    props.completeTodo(todoId);
 }
 
 const TodoItem = (props) => {
@@ -9,7 +9,7 @@ const TodoItem = (props) => {
     const title = props.item.title;
     const status = props.item.completed ? 'completado.' : 'en curso.';
     const a = <del><li><b>Tarea {id}:</b> {title}. <b>Estado:</b> {status}</li></del>
-    const b = <li><b>Tarea {id}:</b> {title}. <b>Estado:</b> {status}<button onClick = {buttonClick}>Finalizar.</button></li>
+    const b = <li><b>Tarea {id}:</b> {title}. <b>Estado:</b> {status}<button onClick = {() => buttonClick(props,id)}>Finalizar.</button></li>
     return(
         props.item.completed? a:b
     );
