@@ -44,7 +44,7 @@ const TodoList = (props) => {
             {todos.filter(i => i.completed === false).map(i => <TodoItem item={i} completeTodo={completeTodo}/>)}
         </ul>,
         <div>
-            <input ref={inputRef}/>
+            <input className="mr-3" ref={inputRef}/>
             <button onClick={()=>addTodo(inputRef)}>Agregar to-do</button></div>,
         <ul>
             {todos.filter(i => i.completed === true).map(i => <TodoItem item={i}/>)}
