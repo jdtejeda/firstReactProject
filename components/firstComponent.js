@@ -15,10 +15,10 @@ export default function FirstComponent() {
 	}, []);
 
 	return (
-		<div className='container'>
+		<div className="container">
 			{users.map((i) => (
 				<div className="row">
-					<h1>{i.name}</h1>,
+					<h1>{i.name}</h1>
 					<TodoList
 						todos={todos.filter((j) => j.userId === i.id)}
 						allTodos={todos}

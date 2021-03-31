@@ -1,5 +1,6 @@
 import React, { useEffect, useState} from 'react';
 import TodoItem from "./todoItem";
+import TodoButton from "./todoButton";
 
 const TodoList = (props) => {
     const [todos, setTodos] = useState([]);
@@ -40,15 +41,20 @@ const TodoList = (props) => {
     }
 
     return(
-        [<ul>
-            {todos.filter(i => i.completed === false).map(i => <TodoItem item={i} completeTodo={completeTodo}/>)}
-        </ul>,
-        <div>
-            <input className="mr-3" ref={inputRef}/>
-            <button onClick={()=>addTodo(inputRef)}>Agregar to-do</button></div>,
-        <ul>
-            {todos.filter(i => i.completed === true).map(i => <TodoItem item={i}/>)}
-        </ul>]
+        <div className='container'>
+            <div className='row'>
+                {todos.filter(i => i.completed === false).map(i => <TodoItem item={i} completeTodo={completeTodo}/>)}
+            </div>
+            <div className='my-3 row input-group'>
+                <input ref={inputRef}/>
+                <div class="input-group-append">
+                    <TodoButton onClick={()=>addTodo(inputRef)} text={'Agregar to-do'}/>
+                </div>            
+            </div>
+            <div className='row'>
+                {todos.filter(i => i.completed === true).map(i => <TodoItem item={i}/>)}
+            </div>
+        </div>       
     );
 };
 export default TodoList;

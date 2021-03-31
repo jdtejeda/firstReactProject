@@ -1,4 +1,5 @@
 import React from 'react';
+import TodoButton from "./todoButton";
 
 function buttonClick(props,todoId){
     props.completeTodo(todoId);
@@ -6,12 +7,25 @@ function buttonClick(props,todoId){
 
 const TodoItem = (props) => {
     const id = props.item.id;
-    const title = props.item.title;
-    const status = props.item.completed ? 'completado.' : 'en curso.';
-    const a = <del><li><b>Tarea {id}:</b> {title}. <b>Estado:</b> {status}</li></del>
-    const b = <li className="mb-3"><b>Tarea {id}:</b> {title}. <b>Estado:</b> {status}<button className="btn btn-danger" onClick = {() => buttonClick(props,id)}>Finalizar.</button></li>
+    const title = <div><b>Tarea {id}: </b> {props.item.title}</div>;
+    const status = props.item.completed;
     return(
-        props.item.completed? a:b
+        <div className='container'>
+            <div className='row'>
+                <div className='my-2 column'>
+                    {status ? <del>{title}</del>:title}
+                </div>
+                {status ? "":
+                <div className='ml-2 column'>
+                    <TodoButton onClick={() => buttonClick(props,id)} text={'Finalizar'}/>
+                </div>}
+            </div>
+            <div className='row'>
+                <div className='mb-2 column'>
+                    <b>Estado: </b> {status ? 'completado.' : 'en curso.'}
+                </div>
+            </div>
+        </div>
     );
 };
 export default TodoItem;
