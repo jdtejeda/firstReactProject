@@ -17,7 +17,7 @@ export default function FirstComponent() {
 	return (
 		<div className="container">
 			{users.map((i) => (
-				<div className="row">
+				<div className="my-5 row">
 					<h1>{i.name}</h1>
 					<TodoList
 						todos={todos.filter((j) => j.userId === i.id)}
